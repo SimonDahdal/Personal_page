@@ -10,7 +10,7 @@ Output the complete Python file.
 """
 
 import os
-from string import Template
+from jinja2 import Environment, FileSystemLoader
 
 from logic_processing import parse_bib_file, get_conference_papers, get_journal_articles, get_patents, generate_html_list, generate_full_publications_html
 
@@ -20,26 +20,29 @@ def generate_researcher_personal_page():
     bib_path = os.path.join(current_dir, "bib_files", "own-bib.bib")
     publications = generate_full_publications_html(bib_path)
     
-    with open(os.path.join(current_dir, "jinja_templates", "reasercher_personal_page.template.html"), "r", encoding="utf-8") as f:
-        template_content = f.read()
-    
-    template = Template(template_content)
-    final_html = template.substitute(publications)
+    env = Environment(loader=FileSystemLoader(os.path.join(current_dir, "jinja_templates")))
+    template = env.get_template("reasercher_personal_page.template.html")
+    final_html = template.render(
+        conference=publications["conference"],
+        journal=publications["journal"],
+        patents=publications["patents"]
+    )
     
     with open(os.path.join(current_dir, "templates", "reasercher_personal_page.html"), "w", encoding="utf-8") as f:
         f.write(final_html)
-
 
 def main():
     current_dir = os.path.dirname(os.path.abspath(__file__))
     bib_path = os.path.join(current_dir, "bib_files", "own-bib.bib")
     publications = generate_full_publications_html(bib_path)
     
-    with open(os.path.join(current_dir, "jinja_templates", "reasercher_personal_page.template.html"), "r", encoding="utf-8") as f:
-        template_content = f.read()
-    
-    template = Template(template_content)
-    final_html = template.substitute(publications)
+    env = Environment(loader=FileSystemLoader(os.path.join(current_dir, "jinja_templates")))
+    template = env.get_template("reasercher_personal_page.template.html")
+    final_html = template.render(
+        conference=publications["conference"],
+        journal=publications["journal"],
+        patents=publications["patents"]
+    )
     
     with open(os.path.join(current_dir, "templates", "reasercher_personal_page.html"), "w", encoding="utf-8") as f:
         f.write(final_html)

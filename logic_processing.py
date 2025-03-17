@@ -29,27 +29,25 @@ def get_journal_articles(entries):
 
 def get_patents(entries):
     """Filter entries for patents."""
-    return [entry for entry in entries if entry.get('ENTRYTYPE','').lower() == 'patent']
+    return [entry for entry in entries if entry.get('ENTRYTYPE','').lower() == 'misc']
 
 def generate_html_list(entries):
     """Generate an HTML list from a list of bib entries."""
     list_items = []
     for entry in entries:
-        entry_type = entry.get('ENTRYTYPE','').lower()
+        authors = entry.get('author', 'No authors')
+        entry_type = entry.get('ENTRYTYPE', '').lower()
         if entry_type == 'inproceedings':
-            # For conference papers, display title, conference name (booktitle) and year
             list_items.append(
-                f"<li>{entry.get('title','No title')} - {entry.get('booktitle','Conference')} {entry.get('year','')}</li>"
+                f"<li>{entry.get('title','No title')} - {authors} - {entry.get('booktitle','Conference')} {entry.get('year','')}</li>"
             )
         elif entry_type == 'article':
-            # For journal articles, display title, journal name and year
             list_items.append(
-                f"<li>{entry.get('title','No title')} - {entry.get('journal','Journal')} {entry.get('year','')}</li>"
+                f"<li>{entry.get('title','No title')} - {authors} - {entry.get('journal','Journal')} {entry.get('year','')}</li>"
             )
         elif entry_type == 'misc':
-            # For patents, display title, patent number and year
             list_items.append(
-                f"<li>{entry.get('title','No title')} - {entry.get('number','Patent number')} {entry.get('year','')}</li>"
+                f"<li>{entry.get('title','No title')} - {authors} - {entry.get('number','Patent number')} {entry.get('year','')}</li>"
             )
     return "<ul>\n" + "\n".join(list_items) + "\n</ul>"
 
@@ -70,11 +68,11 @@ if __name__ == "__main__":
     bib_path = "./bib_files/own-bib.bib"
     publications = generate_full_publications_html(bib_path)
     
-    print("Conference Papers:")
-    print(publications["conference"])
+    # print("Conference Papers:")
+    # print(publications["conference"])
     
-    print("\nJournal Articles:")
-    print(publications["journal"])
+    # print("\nJournal Articles:")
+    # print(publications["journal"])
     
     print("\nPatents:")
     print(publications["patents"])

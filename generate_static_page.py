@@ -25,10 +25,7 @@ def get_journal_articles(entries):
     return [entry for entry in entries if entry.get('ENTRYTYPE','').lower() == 'article']
 
 def get_patents(entries):
-    patents = [entry for entry in entries if entry.get('ENTRYTYPE', '').lower() == 'misc']
-    if not patents:
-        print("Warning: Entry type 'patent' not standard. Not considered.")
-    return patents
+    return [entry for entry in entries if entry.get('ENTRYTYPE', '').lower() == 'misc']
 
 def generate_html_list(entries):
     list_items = []

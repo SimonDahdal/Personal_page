@@ -75,24 +75,33 @@ To deploy the application locally, follow these steps:
    git clone <repository_url>
    cd <repository_name>
    ```
+2. **Create and activate python venv**
+  Ensure you have Python installed
+    ```bash
+    python3 -m venv env
+    ```
 
-2. **Install Dependencies:**
-   Ensure you have Python installed. Then, install the required packages:
+    ```bash
+    source env/bin/activate
+    ```
+
+3. **Install Dependencies:**
+   Install the required packages:
    ```bash
-   pip install flask bibtexparser
+   pip install -r requirements.txt
    ```
 
-3. **Run the Flask Application:**
+4. **Run the Flask Application:**
    If you are using the Flask approach, start the Flask server:
    ```bash
-   python src/app.py
+   python app.py
    ```
    Open your browser and navigate to [http://127.0.0.1:5000](http://127.0.0.1:5000) to view the application.
 
-4. **Generate a Static HTML Page:**
+5. **Generate a Static HTML Page:**
    If you prefer the static approach, generate the HTML page:
    ```bash
-   python src/generate_static_page.py
+   python generate_static_page.py
    ```
    Open the generated `researcher_personal_page.html` in any browser to view the application.
 

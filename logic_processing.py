@@ -1,3 +1,16 @@
+"""
+Create a Python module for processing a BibTeX file. The module should:
+- Import bibtexparser.
+- Define a function parse_bib_file that opens and parses a given BibTeX file ("bib_files/own-bib.bib"), returning the entries.
+- Define a function get_conference_papers that filters entries with ENTRYTYPE equal to "inproceedings".
+- Define a function get_journal_articles that filters entries with ENTRYTYPE equal to "article".
+- Define a function get_patents that filters entries for patents (for this example, check for ENTRYTYPE "patent").
+- Define a function generate_html_list that converts a list of entries into an HTML unordered list (<ul>) with each item detailing the title, publication venue, and year.
+- Define a function generate_full_publications_html that uses the above functions to return a dictionary with keys "conference", "journal", and "patents", each value being the corresponding HTML list.
+- Optionally, include example usage (e.g. in a main block) that prints out the generated HTML lists.
+Output the complete Python file.
+"""
+
 import bibtexparser
 
 def parse_bib_file(bib_path):

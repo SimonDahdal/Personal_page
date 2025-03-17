@@ -1,3 +1,13 @@
+"""
+Create a Python Flask application for a researcher's profile page. The app should:
+- Import Flask, os, bibtexparser, and a function called generate_researcher_personal_page from a separate module.
+- Define utility functions to parse a BibTeX file (located at "bib_files/own-bib.bib") and filter entries for conference papers (ENTRYTYPE "inproceedings"), journal articles (ENTRYTYPE "article"), and patents (ENTRYTYPE "misc").
+- Generate HTML lists from these entries.
+- Include a route ("/") that calls a function generate_researcher_personal_page to generate a static HTML page, then renders a template file "reasercher_personal_page.html" by passing in the generated publication data.
+- Run the app in debug mode when executed.
+Output the complete Python file.
+"""
+
 from flask import Flask, render_template
 import os
 import bibtexparser

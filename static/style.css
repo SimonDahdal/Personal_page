@@ -1,0 +1,22 @@
+body {
+  background-color: #f0f8ff;
+}
+.navbar {
+  background-color: #4caf50;
+}
+.navbar-brand {
+  color: #fff !important;
+}
+.container {
+  border-radius: 8px;
+  padding: 20px;
+}
+h2, h3 {
+  color: #4caf50;
+}
+ul {
+  list-style-type: square;
+}
+li {
+  margin-bottom: 10px;
+}

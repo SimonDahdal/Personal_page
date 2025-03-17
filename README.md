@@ -12,18 +12,20 @@ This application dynamically generates a researcher profile page by extracting p
 
 ## Application Structure
 
-- **/src**
-  - **logic_processing.py**  
-    Contains functions to parse the BibTeX file and generate HTML snippet lists for conference papers, journal articles, and patents.
+- **logic_processing.py**  
+  Parses the BibTeX file and generates HTML lists for conference papers, journal articles, and patents.
 
-  - **templates/researcher_personal_page.template.html**  
-    HTML template with Jinja2 placeholders (`$conference`, `$journal`, `$patents`) that will be substituted with the generated HTML lists.
+- **jinja_templates/reasercher_personal_page.template.html**  
+  Jinja2 template containing placeholders: {{ conference }}, {{ journal }}, {{ patents }}.
 
-  - **generate_static_page.py** (optional)  
-    A script that uses Python's `string.Template` to replace placeholders in the template and generate a final static HTML page.
+- **templates/reasercher_personal_page.html**  
+  Final rendered HTML (updated every time generate_static_page.py or the Flask app runs).
 
-  - **app.py** (optional)  
-    A Flask application script that dynamically renders the HTML page using the generated publication data.
+- **generate_static_page.py**  
+  Uses Jinja2 to load the template in jinja_templates, render placeholders, and write output to templates/reasercher_personal_page.html.
+
+- **app.py**  
+  A Flask application that dynamically renders the template and serves the page at http://127.0.0.1:5000.
 
 ## Development Process With GitHub Copilot
 
@@ -45,13 +47,13 @@ This application dynamically generates a researcher profile page by extracting p
    - Copilot provided suggestions that were adjusted to fit the project’s needs.
 
 3. **Creating the HTML Template:**
-   - Developed [templates/researcher_personal_page.template.html](http://_vscodecontentref_/0) including placeholders (`$conference`, `$journal`, `$patents`) that would later be substituted with actual HTML content.
+   - Developed [templates/researcher_personal_page.template.html](http://_vscodecontentref_/0) including placeholders (`{{ conference }}`, `{{ journal }}`, `{{ patents }}`) that would later be substituted with actual HTML content.
    - Used Bootstrap 5 CDN for responsive design.
 
 4. **Integrating Python Output Into HTML:**
    - Two approaches were suggested:
      - **Dynamic**: Create a Flask application (`app.py`) that renders the template dynamically with Jinja2.
-     - **Static**: Create a Python script (`generate_static_page.py`) that reads the template, substitutes the placeholders using Python's `string.Template`, and writes the final HTML page.
+     - **Static**: Create a Python script (`generate_static_page.py`) that reads the template, substitutes the placeholders using Jinja2, and writes the final HTML page.
    - GitHub Copilot assisted in generating both approaches.
 
 5. **Testing and Running the Application:**
@@ -72,8 +74,8 @@ To deploy the application locally, follow these steps:
 
 1. **Clone the Repository:**
    ```bash
-   git clone <repository_url>
-   cd <repository_name>
+   git clone https://github.com/SimonDahdal/Personal_page.git
+   cd Personal_page
    ```
 2. **Create and activate python venv**
   Ensure you have Python installed
@@ -108,5 +110,3 @@ To deploy the application locally, follow these steps:
 ## Conclusion
 
 This project demonstrates how to create a dynamic researcher profile page that integrates BibTeX data with a web interface using Python and Flask. The development process was streamlined using GitHub Copilot to generate boilerplate code and guide through the implementation of parsing functions, HTML templating, and web integration.
-
-Happy coding!

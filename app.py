@@ -21,7 +21,7 @@ def index():
     bib_path = os.path.join(current_dir, "bib_files", "own-bib.bib")
     publications = generate_full_publications_html(bib_path)
     generate_researcher_personal_page()
-    return render_template("reasercher_personal_page.html", **publications)
+    return render_template("index.html", **publications)
 
 if __name__ == "__main__":
     app.run(debug=True)   

@@ -8,3 +8,6 @@ test/instance/
 
 .pytest_cache/
 env/
+
+.venv/
+venv/

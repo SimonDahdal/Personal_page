@@ -28,7 +28,7 @@ def generate_researcher_personal_page():
         patents=publications["patents"]
     )
     
-    with open(os.path.join(current_dir, "templates", "index.html"), "w", encoding="utf-8") as f:
+    with open(os.path.join(current_dir, "static", "index.html"), "w", encoding="utf-8") as f:
         f.write(final_html)
 
 def main():
@@ -44,7 +44,7 @@ def main():
         patents=publications["patents"]
     )
     
-    with open(os.path.join(current_dir, "templates", "index.html"), "w", encoding="utf-8") as f:
+    with open(os.path.join(current_dir, "static", "index.html"), "w", encoding="utf-8") as f:
         f.write(final_html)
 
 

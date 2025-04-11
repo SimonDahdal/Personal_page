@@ -13,7 +13,7 @@ import os
 from generate_static_page import generate_researcher_personal_page
 from logic_processing import parse_bib_file, get_conference_papers, get_journal_articles, get_patents, generate_html_list, generate_full_publications_html
 
-app = Flask(__name__, template_folder='templates')
+app = Flask(__name__, template_folder='static')
 
 @app.route("/")
 def index():
